@@ -1,0 +1,1 @@
+{"name":"Local: consecutive_pairs","url":"/Users/apple/Documents/c++/consecutive_pairs.cpp","tests":[{"id":1624086584714,"input":"5\n3 6 4 2 1","output":"6 4"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/Users/apple/Documents/c++/consecutive_pairs.cpp","group":"local","local":true}

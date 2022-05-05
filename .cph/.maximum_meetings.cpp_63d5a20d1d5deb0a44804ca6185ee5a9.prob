@@ -1,0 +1,1 @@
+{"name":"Local: maximum_meetings","url":"c:\\Users\\ss\\Documents\\C++\\maximum_meetings.cpp","tests":[{"id":1629887306561,"input":"6\n1 3 0 5 8 5\n2 4 6 7 9 9","output":"1 2 4 5"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\ss\\Documents\\C++\\maximum_meetings.cpp","group":"local","local":true}

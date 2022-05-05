@@ -1,0 +1,1 @@
+{"name":"Local: fulwa_question","url":"c:\\Users\\ss\\Documents\\C++\\fulwa_question.cpp","tests":[{"id":1635061245169,"input":"4 2\n1 2 3 4\n1 2\n1 1\n2 3","output":"51"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\ss\\Documents\\C++\\fulwa_question.cpp","group":"local","local":true}

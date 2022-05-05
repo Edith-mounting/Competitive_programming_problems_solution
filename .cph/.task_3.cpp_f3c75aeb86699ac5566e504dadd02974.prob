@@ -1,0 +1,1 @@
+{"name":"Local: task_3","url":"c:\\Users\\ss\\Documents\\C++\\task_3.cpp","tests":[{"id":1618344100491,"input":"3\n6 3 1","output":"6"},{"id":1618388074491,"input":"2\n3 3","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\ss\\Documents\\C++\\task_3.cpp","group":"local","local":true}

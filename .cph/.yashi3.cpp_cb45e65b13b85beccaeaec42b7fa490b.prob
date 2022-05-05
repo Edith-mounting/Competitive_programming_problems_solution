@@ -1,0 +1,1 @@
+{"name":"Local: yashi3","url":"c:\\Users\\ss\\Documents\\C++\\yashi3.cpp","tests":[{"id":1650124946012,"input":"3\n1 5\n10 1\n20 4","output":"1\n1\n20"},{"id":1650125498436,"input":"1\n625 4","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\ss\\Documents\\C++\\yashi3.cpp","group":"local","local":true}

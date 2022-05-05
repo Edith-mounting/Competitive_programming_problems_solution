@@ -1,0 +1,126 @@
+#include <iostream>
+#include <algorithm>
+#include <map>
+#include <cmath>
+#include <vector>
+#include <queue>
+#include <map>
+using namespace std;
+
+#define ff              first
+#define ss              second
+#define int             long long
+#define pb              push_back
+#define mp              make_pair
+#define mt              make_tuple
+#define pii             pair<int,int>
+#define vi              vector<int>
+#define mii             map<int,int>
+#define pqb             priority_queue<int>
+#define pqs             priority_queue<int,vi,greater<int> >
+#define setbits(x)      __builtin_popcountll(x)
+#define mod             1000000007
+#define inf             1e18
+#define ps(x,y)         fixed<<setprecision(y)<<x
+#define mk(arr,n,type)  type *arr=new type[n];
+#define range(a,b)		substr(a,b-a+1)
+#define w(x)            int x; cin>>x; while(x--)
+#define trace(x) 		cerr<<#x<<": "<<x<<" "<<endl;
+#define FIO             ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0)
+//mt19937                 rng(chrono::steady_clock::now().time_since_epoch().count());
+int absk(int k){
+    if(k<0){
+        return -k;
+    }
+    return k;
+}
+int powd(int x,int y){
+    if(y==0){
+        return 1;
+    }
+    if(y%2==0){
+        int t=powd(x,y/2);
+        return (t*t);
+    }
+    else{
+        int t=powd(x,y/2);
+        return (t*t*x);
+    }
+}
+int32_t main(){
+    int w;
+    cin>>w;
+    while(w--){
+        int n;
+        cin>>n;
+        vector<vi> a(n,vi(32,0));
+        vector<vi> b(n,vi(32,0));
+        for(int i=0;i<n;i++){
+            int temp;
+            cin>>temp;
+            int i1=0;
+            while(temp>0){
+                a[i][i1]=temp%2;
+                temp/=2;
+                i1++;
+            }
+        }
+        for(int i=0;i<n;i++){
+            int temp;
+            cin>>temp;
+            int i1=0;
+            while(temp>0){
+                b[i][i1]=temp%2;
+                temp/=2;
+                i1++;
+            }
+        }
+        vector<int> vis(n,false);
+        vector<bool> v;
+        int ans=0;
+        for(int i=31;i>=0;i--){
+            bool bl=true;
+            vi temp;
+            for(int j=0;j<n;j++){
+                if(a[j][i]==0 && b[j][i]==1 && !vis[i]){
+                    for(int k:v){
+                        if(a[j][k]!=b[j][k]){
+                            bl=false;
+                            break;
+                        }
+                    }
+                    if(!bl){
+                        break;
+                    }
+                    temp.pb(i);
+                }
+                else if(a[j][i]==1){
+                    continue;
+                }
+                else{
+                    bl=false;
+                    break;
+                }
+            }
+            if(bl){
+                ans+=temp.size();
+                for(int j:temp){
+                    v.pb(j);
+                    vis[j]=true;
+                    swap(a[j][i],b[j][i]);
+                }
+            }
+        }
+        int ans1=0;
+        for(int j=0;j<32;j++){
+            int x=1;
+            for(int i=0;i<n;i++){
+                x=x&a[j][i];
+            }
+            if(x==1){
+                ans1=ans1+powd(2,j);
+            }
+        }
+        cout<<ans1<<" "<<ans<<"\n";
+    }
+}

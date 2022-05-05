@@ -1,0 +1,54 @@
+#include <iostream>
+#include <algorithm>
+#include <cmath>
+#include <vector>
+#include <queue>
+#include <set>
+#include <map>
+using namespace std;
+
+double absk(double k){
+    if(k<0){
+        return -k;
+    }
+    return k;
+}
+int main(){
+    double x1,y1,x2,y2,iout,sc;
+    cin>>x1>>y1>>x2>>y>>iout>>sc;
+    int ans=0;
+    int t;
+    cin>>t;
+    double a[t][5];
+    for(int i=0;i<t;i++){
+        for(int j=0;j<5;j++){
+            cin>>a[i][j];
+        }
+        if((a[i][4]-sc)>=0){
+            double area1 = absk(x1-x2)*absk(y1-y2);
+        
+            // Area of 2nd Rectangle
+            double area2 = absk(a[i][2]-a[i][0])*absk(a[i][3]-a[i][1]);
+            
+            double x_dist = min(x2,a[i][0]) - max(x1,a[i][2]);
+            double y_dist = (min(y2,a[i][1] )- max(y1,a[i][3]));
+            double areaI = 0;
+            if( x_dist > 0 && y_dist > 0 )
+            {
+                areaI = (double)(x_dist * y_dist);
+            }
+            
+            // (area1 + area2 - areaI);
+            double deno=area1 + area2 - areaI;
+            double num=areaI;
+            double x1=(double)(num/deno);
+            if((x1-iout)>0){
+                ans=i;
+            }
+        }
+    }
+    for(int i=0;i<5;i++){
+        cout<<a[ans][i]<<" ";
+    }
+    cout<<"\n";
+}

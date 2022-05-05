@@ -1,0 +1,1 @@
+{"name":"Local: fakeimprovedquicksort","url":"c:\\Users\\ss\\Documents\\C++\\fakeimprovedquicksort.cpp","tests":[{"id":1641463862285,"input":"5\n2 4 6 8 10\n1\n5","output":"3"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\ss\\Documents\\C++\\fakeimprovedquicksort.cpp","group":"local","local":true}
