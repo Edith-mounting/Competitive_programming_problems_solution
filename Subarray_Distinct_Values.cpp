@@ -12,7 +12,6 @@ using namespace std;
 #define ff              first
 #define ss              second
 #define pb              push_back
-#define mp              make_pair
 #define mt              make_tuple
 #define pii             pair<int,int>
 #define vi              vector<int>
@@ -34,34 +33,15 @@ using namespace std;
 //typedef tree<int, null_type, less<int>, rb_tree_tag, tree_order_statistics_node_update> pbds;
 
 void solve(){
-    int n;
-    cin >> n;
+    int n, k;
+    cin >> n >> k;
+    vector<int> a(n);
+    for(int i = 0; i < n; i++){
+        cin >> a[i];
+    }
     map< int, int> mp;
-    int j = 0, ans = 0, temp;
-    vector<int> v(n);
-    for(int i = 0; i < n; i++){
-        cin >> v[i];
-        mp[v[i]] = -1;
-    }
-    for(int i = 0; i < n; i++){
-        if(mp[v[i]] == -1){
-            // if(i == 5){
-            //     cout << "Yes";
-            // }
-            ans = max( ans, i - j + 1);
-            // cout << i << " " << j << '\n';
-            if(i - j + 1 == 3){
-                cout << i << " " << j << "\n";
-            }
-        }
-        else{
-            while(j <= mp[v[i]]){
-                mp[j] = -1;
-                j++;
-            }
-        }
-        mp[v[i]] = i;
-    }
+    int ans = 0;
+    for(int i = 0; i < n;)
     cout << ans << "\n";
 }
 

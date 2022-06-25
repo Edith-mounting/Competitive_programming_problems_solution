@@ -1,12 +1,4 @@
-#include <iostream>
-#include <algorithm>
-#include <queue>
-#include <iomanip>
-#include <cmath>
-#include <cstdlib>
-#include <vector>
-#include <set>
-#include <map>
+#include <bits/stdc++.h>
 using namespace std;
  
 #define ff              first
@@ -32,39 +24,57 @@ using namespace std;
 //mt19937                 rng(chrono::steady_clock::now().time_since_epoch().count());
  
 //typedef tree<int, null_type, less<int>, rb_tree_tag, tree_order_statistics_node_update> pbds;
-
-void solve(){
-    int n;
-    cin >> n;
-    map< int, int> mp;
-    int j = 0, ans = 0, temp;
-    vector<int> v(n);
-    for(int i = 0; i < n; i++){
-        cin >> v[i];
-        mp[v[i]] = -1;
+int gcd(int x, int y){
+    if(y == 0){
+        return x;
     }
+    return gcd(y, x%y);
+}
+void solve(){
+    string s;
+    cin >> s;
+    int n = s.length();
+    vector<int> fact(n + 1, 0);
+    fact[0] = 1;
+    for(int i = 1; i <= n; i++){
+        fact[i] = (fact[i]*i)%mod;
+    }
+    vector<int> gcd1(n + 1, 0);
+    for(int i = 1; i <= n; i++){
+        gcd1[i] = gcd(i, i + 1);
+    }
+    int one = -1, zero = -1;
     for(int i = 0; i < n; i++){
-        if(mp[v[i]] == -1){
-            // if(i == 5){
-            //     cout << "Yes";
-            // }
-            ans = max( ans, i - j + 1);
-            // cout << i << " " << j << '\n';
-            if(i - j + 1 == 3){
-                cout << i << " " << j << "\n";
+        if(s[i] == '0'){
+            if(zero == -1){
+                zero = i;
             }
+        }
+        else if(s[i] == '1'){
+            one = i;
+        }
+    }
+    int ans = 0;
+    if(one == -1){
+        if(zero == -1){
+            ans = n;
         }
         else{
-            while(j <= mp[v[i]]){
-                mp[j] = -1;
-                j++;
-            }
+            ans = zero + 1;
         }
-        mp[v[i]] = i;
     }
-    cout << ans << "\n";
+    else if(zero == -1){
+        ans = n - one;
+    }
+    else{
+        ans = zero - one + 1;
+    }
+    cout << ans <<"\n";
 }
 
 int32_t main(){
-    solve();    
+    int t;
+    cin >> t;
+    while(t--)
+        solve();    
 }

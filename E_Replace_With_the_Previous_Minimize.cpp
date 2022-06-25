@@ -1,12 +1,4 @@
-#include <iostream>
-#include <algorithm>
-#include <queue>
-#include <iomanip>
-#include <cmath>
-#include <cstdlib>
-#include <vector>
-#include <set>
-#include <map>
+#include <bits/stdc++.h>
 using namespace std;
  
 #define ff              first
@@ -33,38 +25,55 @@ using namespace std;
  
 //typedef tree<int, null_type, less<int>, rb_tree_tag, tree_order_statistics_node_update> pbds;
 
+int gcd(int x, int y){
+    if(y == 0){
+        return x;
+    }
+    return gcd(y, x%y);
+}
 void solve(){
-    int n;
-    cin >> n;
-    map< int, int> mp;
-    int j = 0, ans = 0, temp;
+    int n, k;
+    cin >> n >> k;
     vector<int> v(n);
+    char c;
     for(int i = 0; i < n; i++){
-        cin >> v[i];
-        mp[v[i]] = -1;
+        cin >> c;
+        v[i] = c - 'a';
     }
+    vector<int> fact(n + 1, 0);
+    fact[0] = 1;
+    for(int i = 1; i <= n; i++){
+        fact[i] = (fact[i]*i)%mod;
+    }
+    vector<int> gcd1(n + 1, 0);
+    for(int i = 1; i <= n; i++){
+        gcd1[i] = gcd(i, i + 1);
+    }
+    vector<bool> vis( 26, false);
     for(int i = 0; i < n; i++){
-        if(mp[v[i]] == -1){
-            // if(i == 5){
-            //     cout << "Yes";
-            // }
-            ans = max( ans, i - j + 1);
-            // cout << i << " " << j << '\n';
-            if(i - j + 1 == 3){
-                cout << i << " " << j << "\n";
+        while(k > 0 && v[i] != 0){
+            if(vis[v[i]]){
+                v[i]--;
+            }
+            else{
+                k--;
+                vis[v[i]] = true;
+                v[i]--;
             }
         }
-        else{
-            while(j <= mp[v[i]]){
-                mp[j] = -1;
-                j++;
-            }
+        while(vis[v[i]] && v[i] != 0){
+            v[i]--;
         }
-        mp[v[i]] = i;
     }
-    cout << ans << "\n";
+    for(int i = 0; i < n; i++){
+        cout << (char)(v[i] + 'a');
+    }
+    cout << "\n";
 }
 
 int32_t main(){
-    solve();    
+    int t;
+    cin >> t;
+    while(t--)
+        solve();    
 }

@@ -20,13 +20,32 @@ int binary_search( int x){
     }
     return (int)ans;
 }
-int solve(int a){
-    if( a <= 1) return a;
-    int ans = binary_search( a);
-    return ans;
+#define ll long long
+
+int solve(){
+    int n, m;
+    cin >> n >> m;
+    vector<int> a(n);
+    for(int i = 0; i < n; i++){
+        cin >> a[i];
+    }
+    int k;
+    cin >> k;
+    vector<int> b(k);
+    for(int i = 0; i < k; i++){
+        cin >> b[i];
+    }
+    map< int, int> mp1, mp2;
+    for(int i:a){
+        mp1[i]++;
+    }
+    vector<>
+    for()
 }
 int32_t main(){
-    int a;
-    cin >> a;
-    cout << solve( a);
+    int w;
+    cin >> w;
+    while( w--){
+        solve();
+    }
 }

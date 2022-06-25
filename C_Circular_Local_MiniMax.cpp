@@ -12,7 +12,6 @@ using namespace std;
 #define ff              first
 #define ss              second
 #define pb              push_back
-#define mp              make_pair
 #define mt              make_tuple
 #define pii             pair<int,int>
 #define vi              vector<int>
@@ -36,35 +35,41 @@ using namespace std;
 void solve(){
     int n;
     cin >> n;
-    map< int, int> mp;
-    int j = 0, ans = 0, temp;
-    vector<int> v(n);
+    vector<int> a(n);
     for(int i = 0; i < n; i++){
-        cin >> v[i];
-        mp[v[i]] = -1;
+        cin >> a[i];
     }
-    for(int i = 0; i < n; i++){
-        if(mp[v[i]] == -1){
-            // if(i == 5){
-            //     cout << "Yes";
-            // }
-            ans = max( ans, i - j + 1);
-            // cout << i << " " << j << '\n';
-            if(i - j + 1 == 3){
-                cout << i << " " << j << "\n";
-            }
-        }
-        else{
-            while(j <= mp[v[i]]){
-                mp[j] = -1;
-                j++;
-            }
-        }
-        mp[v[i]] = i;
+    if(n%2 == 1){
+        cout << "NO\n";
+        return;
     }
-    cout << ans << "\n";
+    sort( a.begin(), a.end());
+    int i1 = 0, i2 = n/2;
+    vector<int> ans(n);
+    for(int i = 0; i < n - 1; i+=2){
+        if(a[i2] == a[i1]){
+            cout << "NO\n";
+            return;
+        }
+        ans[i] = a[i2++];
+        ans[i + 1] = a[i1++];
+        if(i > 0){
+            if(ans[i] <= ans[i - 1]){
+                cout << "NO\n";
+                return;
+            }    
+        }
+    }
+    cout << "YES\n";
+    for(int i:ans){
+        cout << i << " ";
+    }
+    cout << "\n";
 }
 
 int32_t main(){
-    solve();    
+    int t;
+    cin >> t;
+    while(t--)
+        solve();    
 }

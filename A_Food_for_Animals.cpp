@@ -1,12 +1,4 @@
-#include <iostream>
-#include <algorithm>
-#include <queue>
-#include <iomanip>
-#include <cmath>
-#include <cstdlib>
-#include <vector>
-#include <set>
-#include <map>
+#include <bits/stdc++.h>
 using namespace std;
  
 #define ff              first
@@ -34,37 +26,42 @@ using namespace std;
 //typedef tree<int, null_type, less<int>, rb_tree_tag, tree_order_statistics_node_update> pbds;
 
 void solve(){
-    int n;
-    cin >> n;
-    map< int, int> mp;
-    int j = 0, ans = 0, temp;
-    vector<int> v(n);
-    for(int i = 0; i < n; i++){
-        cin >> v[i];
-        mp[v[i]] = -1;
-    }
-    for(int i = 0; i < n; i++){
-        if(mp[v[i]] == -1){
-            // if(i == 5){
-            //     cout << "Yes";
-            // }
-            ans = max( ans, i - j + 1);
-            // cout << i << " " << j << '\n';
-            if(i - j + 1 == 3){
-                cout << i << " " << j << "\n";
-            }
+    int a,b,c,x,y;
+    cin >> a >> b >> c >> x >> y;
+    x -= a;
+    y -= b;
+    if( x <= 0){
+        if(c >= y){
+            cout << "YES\n";
+            return ;
         }
         else{
-            while(j <= mp[v[i]]){
-                mp[j] = -1;
-                j++;
-            }
+            cout << "NO\n";
+            return ;
         }
-        mp[v[i]] = i;
     }
-    cout << ans << "\n";
+    else if( y <= 0){
+        if(c >= x){
+            cout << "YES\n";
+            return ;
+        }
+        else{
+            cout << "NO\n";
+            return ;
+        }
+    }
+    if( c >= x + y){
+        cout << "YES";
+    }
+    else{
+        cout << "NO";
+    }
+    cout << "\n";
 }
 
 int32_t main(){
-    solve();    
+    int t;
+    cin >> t;
+    while(t--)
+        solve();    
 }

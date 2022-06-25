@@ -36,31 +36,20 @@ using namespace std;
 void solve(){
     int n;
     cin >> n;
-    map< int, int> mp;
-    int j = 0, ans = 0, temp;
-    vector<int> v(n);
+    vector<int> a(n);
     for(int i = 0; i < n; i++){
-        cin >> v[i];
-        mp[v[i]] = -1;
+        cin >> a[i];
     }
+    map<int, int> mp;
+    int k;
+    mp[0] = 1;
+    int temp = 0;
+    int ans = 0;
     for(int i = 0; i < n; i++){
-        if(mp[v[i]] == -1){
-            // if(i == 5){
-            //     cout << "Yes";
-            // }
-            ans = max( ans, i - j + 1);
-            // cout << i << " " << j << '\n';
-            if(i - j + 1 == 3){
-                cout << i << " " << j << "\n";
-            }
-        }
-        else{
-            while(j <= mp[v[i]]){
-                mp[j] = -1;
-                j++;
-            }
-        }
-        mp[v[i]] = i;
+        temp += a[i];
+        k = ((temp%n) + n)%n;
+        ans += mp[k];
+        mp[k]++;
     }
     cout << ans << "\n";
 }

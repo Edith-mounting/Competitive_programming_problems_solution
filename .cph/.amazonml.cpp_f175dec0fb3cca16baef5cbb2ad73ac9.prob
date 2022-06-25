@@ -1,0 +1,1 @@
+{"name":"Local: amazonml","url":"c:\\Users\\ss\\Documents\\Programming\\C++\\amazonml.cpp","tests":[{"id":1655558178042,"input":"3\ncba","output":""},{"id":1655561202172,"input":"8\nzxybaaab","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\ss\\Documents\\Programming\\C++\\amazonml.cpp","group":"local","local":true}
